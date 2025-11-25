@@ -1,5 +1,5 @@
 FROM node:20 AS build
-ARG VITE_BACKEND_URL=https://curly-umbrella-ww46p6x9jrqfq7-3001.app.github.dev/api/v1
+ARG VITE_BACKEND_URL=https://redesigned-space-xylophone-rjx9q9wrp4q25q56-3001.app.github.dev/api/v1
 WORKDIR /build
 COPY package.json .
 COPY package-lock.json .

@@ -1,16 +1,16 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext.jsx";
-import { createPost } from "../api/posts.js";
+import { createRecipe } from "../api/recipes.js";
 
-export function CreatePost() {
+export function CreateRecipe() {
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
     const [token] = useAuth();
 
     const queryClient = useQueryClient();
     const createPostMutation = useMutation({
-        mutationFn: () => createPost(token, { title, contents }),
+        mutationFn: () => createRecipe(token, { title, contents }),
         onSuccess: () => queryClient.invalidateQueries(["posts"]),
     });
     const handleSubmit = (e) => {
@@ -18,12 +18,12 @@ export function CreatePost() {
         createPostMutation.mutate();
     };
 
-    if (!token) return <div>Please log in to create new posts.</div>;
+    if (!token) return <div>Please log in to create new recipes.</div>;
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="create-title">Title: </label>
+                <label htmlFor="create-title">Recipe Name: </label>
                 <input
                     type="text"
                     name="create-title"
@@ -47,7 +47,7 @@ export function CreatePost() {
             {createPostMutation.isSuccess ? (
                 <>
                     <br />
-                    Post created successfully!
+                    Recipe created successfully!
                 </>
             ) : null}
         </form>

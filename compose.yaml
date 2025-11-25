@@ -17,7 +17,7 @@ services:
         build:
             context: .
             args:
-                VITE_BACKEND_URL: https://curly-umbrella-ww46p6x9jrqfq7-3001.app.github.dev/api/v1
+                VITE_BACKEND_URL: https://redesigned-space-xylophone-rjx9q9wrp4q25q56.-3001.app.github.dev/api/v1
         ports:
             - "3000:80"
         depends_on:

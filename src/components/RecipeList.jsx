@@ -1,13 +1,13 @@
 import { Fragment } from "react";
 import PropTypes from "prop-types";
-import { Post } from "./Post.jsx";
+import { Recipe } from "./Recipe.jsx";
 
-export function PostList({ posts = [] }) {
+export function RecipeList({ posts = [] }) {
     return (
         <div>
             {posts.map((post) => (
                 <Fragment key={post._id}>
-                    <Post {...post} key={post._id} />
+                    <Recipe {...post} key={post._id} />
                     <hr />
                 </Fragment>
             ))}
@@ -15,6 +15,6 @@ export function PostList({ posts = [] }) {
     );
 }
 
-PostList.propTypes = {
-    posts: PropTypes.arrayOf(PropTypes.shape(Post.propTypes)).isRequired,
+RecipeList.propTypes = {
+    posts: PropTypes.arrayOf(PropTypes.shape(Recipe.propTypes)).isRequired,
 };
