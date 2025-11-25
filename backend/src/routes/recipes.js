@@ -45,7 +45,7 @@ export function recipesRoutes(app) {
         }
     });
 
-    app.recipe("/api/v1/recipes", requireAuth, async (req, res) => {
+    app.post("/api/v1/recipes", requireAuth, async (req, res) => {
         try {
             const recipe = await createRecipe(req.auth.sub, req.body);
             return res.json(recipe);
