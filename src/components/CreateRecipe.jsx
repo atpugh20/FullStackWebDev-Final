@@ -6,11 +6,12 @@ import { createRecipe } from "../api/recipes.js";
 export function CreateRecipe() {
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const [token] = useAuth();
 
     const queryClient = useQueryClient();
     const createRecipeMutation = useMutation({
-        mutationFn: () => createRecipe(token, { title, contents }),
+        mutationFn: () => createRecipe(token, { title, contents, imageURL }),
         onSuccess: () => queryClient.invalidateQueries(["recipes"]),
     });
     const handleSubmit = (e) => {
@@ -32,11 +33,23 @@ export function CreateRecipe() {
                     onChange={(e) => setTitle(e.target.value)}
                 />
             </div>
+
             <br />
             <textarea
                 value={contents}
                 onChange={(e) => setContents(e.target.value)}
             />
+            <br />
+            <div>
+                <label htmlFor="create-title">Image URL: </label>
+                <input
+                    type="text"
+                    name="create-image-url"
+                    id="create-image-url"
+                    value={imageURL}
+                    onChange={(e) => setImageURL(e.target.value)}
+                />
+            </div>
             <br />
             <br />
             <input
