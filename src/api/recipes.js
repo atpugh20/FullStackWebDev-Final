@@ -1,6 +1,6 @@
 export const getRecipes = async (queryParams) => {
     const res = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}/posts?` +
+        `${import.meta.env.VITE_BACKEND_URL}/recipes?` +
             new URLSearchParams(queryParams),
     );
     return await res.json();
@@ -9,7 +9,7 @@ export const getRecipes = async (queryParams) => {
 export const createRecipe = async (token, post) => {
     const res = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/
-posts`,
+recipes`,
         {
             method: "POST",
             headers: {
