@@ -6,7 +6,7 @@ export const getRecipes = async (queryParams) => {
     return await res.json();
 };
 
-export const createRecipe = async (token, post) => {
+export const createRecipe = async (token, recipe) => {
     const res = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/
 recipes`,
@@ -16,7 +16,7 @@ recipes`,
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },
-            body: JSON.stringify(post),
+            body: JSON.stringify(recipe),
         },
     );
     return await res.json();

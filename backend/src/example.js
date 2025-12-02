@@ -10,6 +10,7 @@ const recipe = new Recipe({
     title: "Hello from the outside!",
     author: "Some Person",
     contents: "This recipe is stored in a MongoDB database using Mongoose.",
+    imageURL: "https://pbs.twimg.com/media/FojiNYzX0AAvSUD?format=jpg&name=large",
     tags: ["other"],
 });
 

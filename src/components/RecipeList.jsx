@@ -2,12 +2,12 @@ import { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Recipe } from "./Recipe.jsx";
 
-export function RecipeList({ posts = [] }) {
+export function RecipeList({ recipes = [] }) {
     return (
         <div>
-            {posts.map((post) => (
-                <Fragment key={post._id}>
-                    <Recipe {...post} key={post._id} />
+            {recipes.map((recipe) => (
+                <Fragment key={recipe._id}>
+                    <Recipe {...recipe} key={recipe._id} />
                     <hr />
                 </Fragment>
             ))}
@@ -16,5 +16,5 @@ export function RecipeList({ posts = [] }) {
 }
 
 RecipeList.propTypes = {
-    posts: PropTypes.arrayOf(PropTypes.shape(Recipe.propTypes)).isRequired,
+    recipes: PropTypes.arrayOf(PropTypes.shape(Recipe.propTypes)).isRequired,
 };

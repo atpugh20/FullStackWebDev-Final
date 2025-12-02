@@ -1,8 +1,8 @@
 import { Recipe } from "../db/models/recipe.js";
 import { User } from "../db/models/user.js";
 
-export async function createRecipe(userId, { title, contents, tags }) {
-    const recipe = new Recipe({ title, author: userId, contents, tags });
+export async function createRecipe(userId, { title, contents, imageURL, tags }) {
+    const recipe = new Recipe({ title, author: userId, contents, imageURL, tags });
     return await recipe.save();
 }
 
@@ -31,10 +31,10 @@ export async function listRecipesByTag(tags, options) {
 export async function getRecipeById(recipeId) {
     return await Recipe.findById(recipeId);
 }
-export async function updateRecipe(userId, recipeId, { title, contents, tags }) {
+export async function updateRecipe(userId, recipeId, { title, contents, imageURL, tags }) {
     return await Recipe.findOneAndUpdate(
         { _id: recipeId, author: userId },
-        { $set: { title, contents, tags } },
+        { $set: { title, contents, imageURL, tags } },
         { new: true },
     );
 }

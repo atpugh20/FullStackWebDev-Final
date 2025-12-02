@@ -14,12 +14,12 @@ export function RecipePage() {
     const [sortBy, setSortBy] = useState("createdAt");
     const [sortOrder, setSortOrder] = useState("descending");
 
-    const postsQuery = useQuery({
-        queryKey: ["posts", { author, sortBy, sortOrder }],
+    const recipesQuery = useQuery({
+        queryKey: ["recipes", { author, sortBy, sortOrder }],
         queryFn: () => getRecipes({ author, sortBy, sortOrder }),
     });
 
-    const posts = postsQuery.data ?? [];
+    const recipes = recipesQuery.data ?? [];
 
     return (
         <div style={{ padding: 8 }}>
@@ -44,7 +44,7 @@ export function RecipePage() {
                 onOrderChange={(orderValue) => setSortOrder(orderValue)}
             />
             <hr />
-            <RecipeList posts={posts} />
+            <RecipeList recipes={recipes} />
         </div>
     );
 }

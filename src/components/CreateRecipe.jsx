@@ -9,13 +9,13 @@ export function CreateRecipe() {
     const [token] = useAuth();
 
     const queryClient = useQueryClient();
-    const createPostMutation = useMutation({
+    const createRecipeMutation = useMutation({
         mutationFn: () => createRecipe(token, { title, contents }),
-        onSuccess: () => queryClient.invalidateQueries(["posts"]),
+        onSuccess: () => queryClient.invalidateQueries(["recipes"]),
     });
     const handleSubmit = (e) => {
         e.preventDefault();
-        createPostMutation.mutate();
+        createRecipeMutation.mutate();
     };
 
     if (!token) return <div>Please log in to create new recipes.</div>;
@@ -41,10 +41,10 @@ export function CreateRecipe() {
             <br />
             <input
                 type="submit"
-                value={createPostMutation.isPending ? "Creating..." : "Create"}
-                disabled={!title || createPostMutation.isPending}
+                value={createRecipeMutation.isPending ? "Creating..." : "Create"}
+                disabled={!title || createRecipeMutation.isPending}
             />
-            {createPostMutation.isSuccess ? (
+            {createRecipeMutation.isSuccess ? (
                 <>
                     <br />
                     Recipe created successfully!
